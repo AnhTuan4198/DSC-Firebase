@@ -21,6 +21,7 @@ function App (){
   this.logOutBtn = document.getElementById("logout");
   this.messageForm = document.getElementById("chat-form");
   this.messageInputBox =document.getElementById("chat-input");
+  this.messageArea= document.querySelector('.chat-area');
   this.messageList = document.getElementById("message-list");
   this.init();
 }
@@ -38,7 +39,7 @@ App.prototype.init = function(){
   this.messageForm.addEventListener("submit",saveMessage.bind(this));
   this.auth = firebase.auth();
   this.auth.onAuthStateChanged(onAuthStateChanged.bind(this));
-  // this.loadMessage.bind(this)
+  
 }
 
 App.prototype.loadMessage = loadMessage;

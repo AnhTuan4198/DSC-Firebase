@@ -60,7 +60,10 @@ function displayMessage(key ,userId, userName, message, userAvaUrl, messAsImage)
    }else if(messAsImage){
 
    }
-   this.messageList.scrollBotom = this.messageList.scrollHeight;
+   setTimeout(function () {
+     messageElement.classList.add("visible");
+   }, 1);
+   this.messageArea.scrollTop = this.messageArea.scrollHeight;
    this.messageInputBox.focus();
 }
 
