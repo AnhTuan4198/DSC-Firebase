@@ -1,5 +1,5 @@
 
-import { setNavbar, setContent } from "./setup_UI.js";
+import { setNavbar, setContent, loadMessage } from "./setup_UI.js";
 
 /** Sign up new account 
  * @param: window event
@@ -94,7 +94,7 @@ function logOut (){
    if(user){
       setNavbar(user);
       setContent(user);
-      console.log(user);
+     this.loadMessage();
    }else{
       setNavbar();
       setContent();
@@ -102,4 +102,21 @@ function logOut (){
    }
  }
 
-export { signUp, logOut, signIn, onAuthStateChanged, logInWithGoogle };
+/** Give permission for send message */
+function checkSignedIn(){
+  if(this.auth.currentUser){
+    console.log("true")
+    return true;
+  }
+  let notice = `You must login first`;
+  return false;
+}
+
+export {
+  signUp,
+  logOut,
+  signIn,
+  onAuthStateChanged,
+  logInWithGoogle,
+  checkSignedIn,
+};

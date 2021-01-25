@@ -26,9 +26,6 @@
           <li class="logged-in" style = "display: none;">
             <a href="#" class="grey-text" id="logout">Logout</a>
           </li>
-          <li class="logged-in" style = "display: none;">
-            <a href="#" class="grey-text modal-trigger" data-target="modal-create">Create Guide</a>
-          </li>
           <li class="logged-out" style = "display: none;">
             
             <a href="#" class="grey-text modal-trigger" data-target="modal-login"><i class="material-icons left">person</i>Login</a>
@@ -138,18 +135,19 @@
               <div class="chat-area ">
                 <!--Chat list-->
                 <div class="chats">
-                  <div class="chats">
+                  <div id="message-list" class="chats">
                     <div class="chat chat-right">
                       <div class="chat-avatar">
                         <a class="avatar">
                           <img src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-4/images/user/12.jpg" class="circle" alt="avatar">
                         </a>
+                        <div class="name">Hello1</div>
                       </div>
                       <div class="chat-body">
                         <div class="chat-text">
                           <p>How can we help? We're here for you!</p>
                         </div>
-                        <div class="name"></div>
+                        
                       </div>
                     </div>
                     <div class="chat">
@@ -274,10 +272,10 @@
 
               <!-- Chat footer <-->
               <div class="chat-footer">
-                <form onsubmit="enter_chat();" action="javascript:void(0);" class="chat-input">
+                <form id="chat-form" class="chat-input">
                   <i class="small material-icons ">crop_original</i>
-                  <input type="text" placeholder="Type message here.." class="message mb-0">
-                  <a class="btn waves-effect waves-light send" onclick="enter_chat();">Send</a>
+                  <input id="chat-input" type="text" placeholder="Type message here.." class="message mb-0" autocomplete="off">
+                  <button class="btn waves-effect waves-light send" >Send</button>
                 </form>
               </div>
               <!--/ Chat footer -->
@@ -302,13 +300,17 @@
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-database.js"></script>
   <!-- TODO: Add SDKs for Firebase products that you want to use-->
   <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-analytics.js"></script>
   <script >
      var firebaseConfig = {
       apiKey: "AIzaSyD3sqNhq-nHba-ntyLL6FeS66Xy20HuVKs",
       authDomain: "chat-app-adb40.firebaseapp.com",
+      databaseURL: "https://chat-app-adb40-default-rtdb.firebaseio.com/",
       projectId: "chat-app-adb40",
+      storageBucket: "chat-app-adb40.appspot.com",
+      messagingSenderId: "372486320743",
       appId: "1:372486320743:web:315f8f1b164bb819bbdac2",
       measurementId: "G-7HF15N7SY8"
     };
