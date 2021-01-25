@@ -1,7 +1,12 @@
-/** Sign up new account */
 
-function signUp (e){
-  e.preventDefault();
+import { setNavbar, setContent } from "./setup_UI.js";
+
+/** Sign up new account 
+ * @param: window event
+*/
+
+function signUp (event){
+  event.preventDefault();
   const email = this.signUpForm['signup-email'].value;
   const password = this.signUpForm["signup-password"].value;
   console.log(this.auth);
@@ -22,9 +27,20 @@ function signUp (e){
     `)
   })
 }
+/** Login with google */
+function logInWithGoogle(){
+  let provider = new firebase.auth.GoogleAuthProvider();
+  this.auth.signInWithPopup(provider);
+  const sigupModal = document.getElementById("modal-login");
+  M.Modal.getInstance(sigupModal).close();
+}
 
-function signIn(e){
-    e.preventDefault();
+
+/**Login function
+ * @param: window event
+  */
+function signIn(event){
+    event.preventDefault();
     // Get input email and password
     const email = this.signInForm["login-email"].value;
     const password = this.signInForm["login-password"].value;
@@ -34,8 +50,7 @@ function signIn(e){
       .signInWithEmailAndPassword(email, password)
       .then( (credential) => {
         // Signed in
-        var user = credential.user;
-        console.log(user)
+         var user = credential.user;
          const sigupModal = document.getElementById("modal-login");
          M.Modal.getInstance(sigupModal).close();
          this.signUpForm.reset();
@@ -49,8 +64,11 @@ function signIn(e){
         ErrorMessage: ${errorMessage}
     `);
       });
-
 }
+
+
+/** Logout
+ */
 function logOut (){
     this.auth.signOut()
     .then(()=>{
@@ -67,4 +85,21 @@ function logOut (){
   })
 }
 
-export { signUp, logOut, signIn };
+
+/** Tracking Auth status
+ * @param: callback
+ */
+
+  function onAuthStateChanged (user) {
+   if(user){
+      setNavbar(user);
+      setContent(user);
+      console.log(user);
+   }else{
+      setNavbar();
+      setContent();
+      console.log("Not login yet!!");
+   }
+ }
+
+export { signUp, logOut, signIn, onAuthStateChanged, logInWithGoogle };
