@@ -180,6 +180,8 @@
     max-width: 200px;
     max-height: 300px;
     margin:0 1rem;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, .14);
 }
 
 .chat-application .app-chat .chat-content .chat-content-area .chat-area .chats .chat .chat-body .chat-text:first-child:before {
