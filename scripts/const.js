@@ -10,9 +10,10 @@ export const CHAT_TEMPLATE = `<div class="chat">
         </a>
     </div>
     <div class="chat-body">
-       <div  class="chat-text">
-          <p class="content"></p>
+       <div class="content chat-text" >
         </div>
         <div id="user-name" class="name"></div>
         </div>
     </div>`;
+
+export const LOADING_IMAGE = `/img/loading.gif `

@@ -4,6 +4,7 @@ import {
   WELCOME_SCREEN,
   CHAT_AREA,
   CHAT_TEMPLATE,
+  LOADING_IMAGE,
 } from "./const.js";
 
 
@@ -36,8 +37,6 @@ import {
 /** Display message to container */
 function displayMessage(key ,userId, userName, message, userAvaUrl, messAsImage){
    let messageElement = document.getElementById(key);
-   // console.log(key);
-   // console.log(`Hello this is ${messageElement}`);
    if( ! messageElement){
       let container = document.createElement("div");
       container.innerHTML = CHAT_TEMPLATE;
@@ -55,10 +54,18 @@ function displayMessage(key ,userId, userName, message, userAvaUrl, messAsImage)
    name.innerHTML = userName;
    avatar.setAttribute('src',userAvaUrl);
    if(message){
-      //let content = document.createElement("p");
-     messageContent.innerHTML = message;
+      let content = document.createElement("p");
+      content.innerHTML = message ;
+      messageContent.append(content);
    }else if(messAsImage){
-
+      let img = document.createElement("img");
+      img.addEventListener("load",()=>{
+         this.messageArea.scrollTop = this.messageArea.scrollHeight;
+      })
+      this.setImageAsMessage(messAsImage,img);
+      messageContent.classList.remove("chat-text");
+      messageContent.innerHTML="";
+      messageContent.append(img);
    }
    setTimeout(function () {
      messageElement.classList.add("visible");
@@ -90,4 +97,28 @@ function loadMessage(){
       this.messagesRef.limitToLast(20).on("child_changed", setMessage);
 }
 
-export { setNavbar, setContent, displayMessage, loadMessage };
+/**Set image as message in message list
+ * @param: imageUri, message element
+ */
+function setImageAsMessage (imgURI, imgElement){
+   if(imgURI.startsWith("gs://")){
+      imgElement.src = LOADING_IMAGE;
+         this.storage
+           .refFromURL(imgURI)
+           .getDownloadURL()
+           .then((url) => {
+             console.log(url);
+             imgElement.src = url;
+           });
+   }else{
+      imgElement.src = imgURI;
+   }
+}
+
+export {
+  setNavbar,
+  setContent,
+  displayMessage,
+  loadMessage,
+  setImageAsMessage,
+};

@@ -176,6 +176,11 @@
     color: #757575;
     max-width: 400px
 }
+.chat-application .app-chat .chat-content .chat-content-area .chat-area .chats .chat .chat-body  img{
+    max-width: 200px;
+    max-height: 300px;
+    margin:0 1rem;
+}
 
 .chat-application .app-chat .chat-content .chat-content-area .chat-area .chats .chat .chat-body .chat-text:first-child:before {
     width: 0;
@@ -198,25 +203,50 @@
 }
 
 .chat-application .app-chat .chat-content .chat-content-area .chat-footer {
-    margin: 1rem
+    margin: 1rem;
+    display: flex;
+    /* justify-content: space-between; */
 }
 
 .chat-application .app-chat .chat-content .chat-content-area .chat-footer .chat-input {
     /* display: -webkit-box; */
     display: flex;
     /* -webkit-box-pack: justify; */
-    justify-content: space-between
+     justify-content: space-between;
+     margin-top: 3px;
+   
+}
+.chat-application .app-chat .chat-content .chat-content-area .chat-footer .img-input {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    /* position: relative; */
+    padding-right: 0px;
+}
+.chat-application .app-chat .chat-content .chat-content-area .chat-footer #img-input {
+    display: none;
+    /* position: relative; */
+}
+.chat-application .app-chat .chat-content .chat-content-area .chat-footer .upload-img-btn {
+    width: auto;
+    height: 42px;
+    padding:0px;
+    margin: 0;
+    border: none;
+    background-color: white;
+}
+.chat-application .app-chat .chat-content .chat-content-area .chat-footer .upload-img-btn i{
+    font-size: 50px;
 }
 
 .chat-application .app-chat .chat-content .chat-content-area .chat-footer .chat-input i {
-    line-height: 2
+    line-height: 2;
 }
 
 .chat-application .app-chat .chat-content .chat-content-area .chat-footer .chat-input .message {
     background-color: #eceff1;
     border-radius: 5px;
     border-bottom: 0;
-    margin-left: 1.5rem;
     margin-right: 1.5rem;
     padding: 0 1.5rem;
     color: #9e9e9e

@@ -175,9 +175,14 @@
               <!--/ Chat content area-->
 
               <!-- Chat footer <-->
-              <div class="chat-footer">
-                <form id="chat-form" class="chat-input">
-                  <i class="small material-icons ">crop_original</i>
+              <div class="row chat-footer">
+                <form id="upload-image-form" class = "col m1 l1 image-input ">
+                  <input id="img-input" type="file" accept="image/*,capture=camera">
+                  <button class ="upload-img-btn">
+                    <i class="small material-icons ">crop_original</i>
+                  </button>
+                </form>
+                <form id="chat-form" class="col m11 l11 chat-input">
                   <input id="chat-input" type="text" placeholder="Type message here.." class="message mb-0" autocomplete="off">
                   <button class="btn waves-effect waves-light send" >Send</button>
                 </form>
@@ -205,6 +210,7 @@
   <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-storage.js"></script>
   <!-- TODO: Add SDKs for Firebase products that you want to use-->
   <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-analytics.js"></script>
   <script >
